@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cheese_ge — 社群連結</title>
+  <meta name="description" content="cheese_ge 的社群連結入口：Instagram、Discord、個人網站、LINE。" />
+  <meta name="theme-color" content="#0d0800" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="cheese_ge — 社群連結" />
+  <meta property="og:description" content="追蹤我的社群：Instagram、Discord、個人網站、LINE。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --amber: #ffb627;
+      --amber-soft: #ffd27a;
+      --amber-deep: #e08e00;
+      --bg: #0d0800;
+      --surface: #ffb6270b;
+      --surface-hover: #ffb62717;
+      --line: #ffb62738;
+      --line-strong: #ffb62773;
+      --text: #f7f3ea;
+      --text-muted: #cdbfa4;
+      --text-faint: #8e8069;
+      --glow: 0 0 40px -12px #ffb6278c;
+      --radius: 18px;
+      --maxw: 720px;
+      --font: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fdfaf3;
+        --surface: #ffb62717;
+        --surface-hover: #ffb62729;
+        --line: #b4780038;
+        --line-strong: #b4780066;
+        --amber: #b87400;
+        --amber-soft: #8a5600;
+        --amber-deep: #ffb627;
+        --text: #241a08;
+        --text-muted: #5e4f36;
+        --text-faint: #8b7a5d;
+        --glow: 0 12px 32px -18px #78500080;
+        color-scheme: light;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-weight: 500;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1.5rem, 6vw, 3rem) clamp(1.15rem, 5vw, 2rem);
+    }
+
+    /* 背景：暖色光暈 + 網格 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(60rem 40rem at 12% -10%, #ffb62729, #0000 60%),
+        radial-gradient(48rem 34rem at 92% 8%, #ff8c271a, #0000 62%),
+        radial-gradient(50rem 40rem at 50% 112%, #ffb6271a, #0000 65%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .35;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(75% 65% at 50% 0, #000 0%, #0000 100%);
+      mask-image: radial-gradient(75% 65% at 50% 0, #000 0%, #0000 100%);
+    }
+
+    .page {
+      width: min(100%, var(--maxw));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 標題區 */
+    .hero { text-align: center; margin-bottom: clamp(1.75rem, 6vw, 2.75rem); }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--amber);
+      letter-spacing: -.01em;
+    }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--amber) 60%, transparent);
+      animation: pulse 2.6s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--amber) 55%, transparent); }
+      70%  { box-shadow: 0 0 0 10px #0000; }
+      100% { box-shadow: 0 0 0 0 #0000; }
+    }
+
+    .hero h1 {
+      margin: .7rem 0 0;
+      font-size: clamp(2.1rem, 8vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+      background: linear-gradient(100deg, var(--amber-deep), var(--amber) 42%, var(--amber-soft));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      margin: .6rem 0 0;
+      color: var(--text-muted);
+      font-size: clamp(.9rem, 3.4vw, 1.02rem);
+    }
+
+    /* 方格 */
+    .grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(.85rem, 3.5vw, 1.25rem);
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      aspect-ratio: 1 / 1;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .22s cubic-bezier(.16,1,.3,1),
+                  background .22s, border-color .22s, box-shadow .22s;
+    }
+    .card .icon {
+      width: clamp(38px, 12vw, 52px);
+      height: clamp(38px, 12vw, 52px);
+      color: var(--amber);
+      transition: transform .22s cubic-bezier(.16,1,.3,1);
+    }
+    .card .icon svg { width: 100%; height: 100%; display: block; }
+    .card .label {
+      font-weight: 700;
+      font-size: clamp(1rem, 4vw, 1.15rem);
+      letter-spacing: .01em;
+    }
+    .card .sub {
+      font-family: var(--font-mono);
+      font-size: clamp(.72rem, 3vw, .82rem);
+      color: var(--text-faint);
+      word-break: break-all;
+    }
+
+    @media (hover: hover) {
+      .card:hover {
+        transform: translateY(-4px);
+        background: var(--surface-hover);
+        border-color: var(--line-strong);
+        box-shadow: var(--glow);
+      }
+      .card:hover .icon { transform: scale(1.08); }
+    }
+    .card:active { transform: translateY(-1px) scale(.99); }
+    .card:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    /* Discord 方格是 <button>，重置預設樣式 */
+    button.card {
+      width: 100%;
+      font: inherit;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .card.copied {
+      background: var(--surface-hover);
+      border-color: var(--line-strong);
+    }
+    .card.copied .icon { color: var(--amber-soft); }
+
+    /* 桌機：四格一排 */
+    @media (min-width: 760px) {
+      .grid { grid-template-columns: repeat(4, 1fr); }
+      .card { gap: .85rem; }
+    }
+
+    footer {
+      margin-top: clamp(1.75rem, 6vw, 2.75rem);
+      color: var(--text-faint);
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="brand"><span class="dot" aria-hidden="true"></span>cheese_ge</span>
+      <h1>找我</h1>
+    </section>
+
+    <nav class="grid" aria-label="社群連結">
+      <!-- Instagram：把 href 換成你的 IG 連結 -->
+      <a class="card" href="https://instagram.com/chen.cheese.ge" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <span class="icon" aria-hidden="true">
+          <!-- Instagram 官方標誌，來源 Simple Icons (CC0) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+          </svg>
+        </span>
+        <span class="label">Instagram</span>
+        <span class="sub">@chen.cheese.ge</span>
+      </a>
+
+      <!-- Discord：點擊複製使用者名稱，改 data-username 即可 -->
+      <button type="button" class="card" data-copy data-username="cheese_ge" aria-label="複製 Discord 使用者名稱">
+        <span class="icon" aria-hidden="true">
+          <!-- Discord 官方標誌，來源 Simple Icons (CC0) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+          </svg>
+        </span>
+        <span class="label">Discord</span>
+        <span class="sub" data-copy-hint>點我複製</span>
+      </button>
+
+      <!-- 網站：把 href 換成你的網站連結 -->
+      <a class="card" href="https://cheesege.com" target="_blank" rel="noopener noreferrer" aria-label="個人網站">
+        <span class="icon" aria-hidden="true">
+          <!-- globe 圖示，來源 Lucide (ISC) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </span>
+        <span class="label">網站</span>
+        <span class="sub">cheesege.com</span>
+      </a>
+
+      <!-- LINE：把 href 換成你的 LINE 連結 -->
+      <a class="card" href="https://line.me/ti/p/2155323423.6.5" target="_blank" rel="noopener noreferrer" aria-label="LINE">
+        <span class="icon" aria-hidden="true">
+          <!-- LINE 官方標誌，來源 Simple Icons (CC0) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          </svg>
+        </span>
+        <span class="label">LINE</span>
+        <span class="sub">加好友</span>
+      </a>
+    </nav>
+
+    <footer>© <span id="year"></span> cheese_ge</footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Discord 方格：點擊複製使用者名稱
+    (function () {
+      var btn = document.querySelector("[data-copy]");
+      if (!btn) return;
+      var hint = btn.querySelector("[data-copy-hint]");
+      var original = hint.textContent;
+      var timer;
+
+      function copy(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text);
+        }
+        return new Promise(function (resolve, reject) {
+          try {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            ok ? resolve() : reject();
+          } catch (e) { reject(e); }
+        });
+      }
+
+      btn.addEventListener("click", function () {
+        copy(btn.dataset.username).then(function () {
+          hint.textContent = "已複製 ✓";
+          btn.classList.add("copied");
+        }).catch(function () {
+          hint.textContent = "複製失敗，請長按選取";
+        }).finally(function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            hint.textContent = original;
+            btn.classList.remove("copied");
+          }, 1800);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
