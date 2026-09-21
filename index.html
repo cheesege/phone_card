@@ -153,12 +153,43 @@
       font-size: clamp(.9rem, 3.4vw, 1.02rem);
     }
 
+    /* 區塊標題 */
+    .section-head {
+      width: 100%;
+      text-align: center;
+      margin: clamp(2.5rem, 9vw, 3.5rem) 0 clamp(1.15rem, 4vw, 1.6rem);
+    }
+    .rule {
+      display: block;
+      width: min(100%, 240px);
+      height: 1px;
+      margin: 0 auto clamp(1.15rem, 4vw, 1.6rem);
+      background: linear-gradient(90deg, #0000, var(--line-strong), #0000);
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 6vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -.035em;
+      line-height: 1.2;
+      background: linear-gradient(100deg, var(--amber-deep), var(--amber) 42%, var(--amber-soft));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .section-head .kicker {
+      margin: .35rem 0 0;
+      color: var(--text-faint);
+      font-size: clamp(.8rem, 3.2vw, .9rem);
+    }
+
     /* 方格 */
     .grid {
+      --gap: clamp(.85rem, 3.5vw, 1.25rem);
       width: 100%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: clamp(.85rem, 3.5vw, 1.25rem);
+      gap: var(--gap);
     }
 
     .card {
@@ -232,6 +263,12 @@
     @media (min-width: 760px) {
       .grid { grid-template-columns: repeat(4, 1fr); }
       .card { gap: .85rem; }
+      /* 兩格區塊：置中並縮到與四格區塊同樣的方格尺寸 */
+      .grid.duo {
+        grid-template-columns: repeat(2, 1fr);
+        width: calc(50% - var(--gap) / 2);
+        margin-inline: auto;
+      }
     }
 
     footer {
@@ -305,6 +342,40 @@
         </span>
         <span class="label">LINE</span>
         <span class="sub">加好友</span>
+      </a>
+    </nav>
+
+    <section class="section-head">
+      <span class="rule" aria-hidden="true"></span>
+      <h2>找黑客社</h2>
+      <p class="kicker">逢甲大學黑客社</p>
+    </section>
+
+    <nav class="grid duo" aria-label="黑客社連結">
+      <!-- 黑客社官網：把 href 換成官網連結 -->
+      <a class="card" href="https://hackersir.org" target="_blank" rel="noopener noreferrer" aria-label="黑客社官網">
+        <span class="icon" aria-hidden="true">
+          <!-- globe 圖示，來源 Lucide (ISC) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </span>
+        <span class="label">官網</span>
+        <span class="sub">黑客社</span>
+      </a>
+
+      <!-- Linktree：把 href 換成黑客社的 Linktree 連結 -->
+      <a class="card" href="https://linktr.ee/fcuhackersir" target="_blank" rel="noopener noreferrer" aria-label="黑客社 Linktree">
+        <span class="icon" aria-hidden="true">
+          <!-- Linktree 官方標誌，來源 Simple Icons (CC0) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="m13.73635 5.85251 4.00467-4.11665 2.3248 2.3808-4.20064 4.00466h5.9085v3.30473h-5.9365l4.22865 4.10766-2.3248 2.3338L12.0005 12.099l-5.74052 5.76852-2.3248-2.3248 4.22864-4.10766h-5.9375V8.12132h5.9085L3.93417 4.11666l2.3248-2.3808 4.00468 4.11665V0h3.4727zm-3.4727 10.30614h3.4727V24h-3.4727z"/>
+          </svg>
+        </span>
+        <span class="label">Linktree</span>
+        <span class="sub">所有連結</span>
       </a>
     </nav>
 
