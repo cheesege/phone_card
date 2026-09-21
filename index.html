@@ -245,19 +245,28 @@
       outline-offset: 3px;
     }
 
-    /* Discord 方格是 <button>，重置預設樣式 */
-    button.card {
-      width: 100%;
-      font: inherit;
-      cursor: pointer;
-      -webkit-appearance: none;
-      appearance: none;
+    /* 橫幅方格：佔滿整排，圖示在左、文字在右 */
+    .card.wide {
+      grid-column: 1 / -1;
+      aspect-ratio: auto;
+      flex-direction: row;
+      gap: .9rem;
+      padding: clamp(.95rem, 3.6vw, 1.2rem) clamp(1rem, 4vw, 1.5rem);
     }
-    .card.copied {
-      background: var(--surface-hover);
-      border-color: var(--line-strong);
+    .card.wide .icon {
+      width: clamp(26px, 7vw, 32px);
+      height: clamp(26px, 7vw, 32px);
+      flex-shrink: 0;
     }
-    .card.copied .icon { color: var(--amber-soft); }
+    .card.wide .wide-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      line-height: 1.35;
+      min-width: 0;
+    }
+    .card.wide .label { font-size: clamp(.95rem, 3.6vw, 1.05rem); }
 
     /* 桌機：四格一排 */
     @media (min-width: 760px) {
@@ -306,8 +315,8 @@
         <span class="sub">@chen.cheese.ge</span>
       </a>
 
-      <!-- Discord：點擊複製使用者名稱，改 data-username 即可 -->
-      <button type="button" class="card" data-copy data-username="cheese_ge" aria-label="複製 Discord 使用者名稱">
+      <!-- Discord：把 href 換成你的 Discord 連結 -->
+      <a class="card" href="https://discord.gg/kZ5RV4Wm" target="_blank" rel="noopener noreferrer" aria-label="Discord">
         <span class="icon" aria-hidden="true">
           <!-- Discord 官方標誌，來源 Simple Icons (CC0) -->
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -315,8 +324,8 @@
           </svg>
         </span>
         <span class="label">Discord</span>
-        <span class="sub" data-copy-hint>點我複製</span>
-      </button>
+        <span class="sub">cheese_ge</span>
+      </a>
 
       <!-- 網站：把 href 換成你的網站連結 -->
       <a class="card" href="https://cheesege.com" target="_blank" rel="noopener noreferrer" aria-label="個人網站">
@@ -328,7 +337,7 @@
             <path d="M2 12h20"/>
           </svg>
         </span>
-        <span class="label">網站</span>
+        <span class="label">個人網站</span>
         <span class="sub">cheesege.com</span>
       </a>
 
@@ -342,6 +351,21 @@
         </span>
         <span class="label">LINE</span>
         <span class="sub">加好友</span>
+      </a>
+
+      <!-- Email：把 mailto: 後面換成你的信箱，下面小字也記得一起改 -->
+      <a class="card wide" href="mailto:me@cheesege.com" aria-label="寄信給我">
+        <span class="icon" aria-hidden="true">
+          <!-- mail 圖示，來源 Lucide (ISC) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+          </svg>
+        </span>
+        <span class="wide-text">
+          <span class="label">Email</span>
+          <span class="sub">me@cheesege.com</span>
+        </span>
       </a>
     </nav>
 
@@ -384,50 +408,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Discord 方格：點擊複製使用者名稱
-    (function () {
-      var btn = document.querySelector("[data-copy]");
-      if (!btn) return;
-      var hint = btn.querySelector("[data-copy-hint]");
-      var original = hint.textContent;
-      var timer;
-
-      function copy(text) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          return navigator.clipboard.writeText(text);
-        }
-        return new Promise(function (resolve, reject) {
-          try {
-            var ta = document.createElement("textarea");
-            ta.value = text;
-            ta.setAttribute("readonly", "");
-            ta.style.position = "fixed";
-            ta.style.opacity = "0";
-            document.body.appendChild(ta);
-            ta.select();
-            var ok = document.execCommand("copy");
-            document.body.removeChild(ta);
-            ok ? resolve() : reject();
-          } catch (e) { reject(e); }
-        });
-      }
-
-      btn.addEventListener("click", function () {
-        copy(btn.dataset.username).then(function () {
-          hint.textContent = "已複製 ✓";
-          btn.classList.add("copied");
-        }).catch(function () {
-          hint.textContent = "複製失敗，請長按選取";
-        }).finally(function () {
-          clearTimeout(timer);
-          timer = setTimeout(function () {
-            hint.textContent = original;
-            btn.classList.remove("copied");
-          }, 1800);
-        });
-      });
-    })();
   </script>
 </body>
 </html>
